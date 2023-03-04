@@ -6,20 +6,68 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:34:33 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/04 23:58:22 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/05 00:45:20 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// long	check_procces(char **pro, char **path)
-// {
-// 	char *mas;
-
-// 	mas = 
+long	check_valid_procces(char *mas, int j)
+{
+	char *mas_1[2];
+	pid_t  pid;
 	
-// 	return (0);	
-// }
+	printf("  mas = %s", mas);
+	mas_1[0] = mas;
+	mas_1[1] = 0;
+	pid = fork();
+	if (pid == -1)
+	{
+		printf("ERROR\n");
+		exit(0);
+	}
+	if (!pid)
+	{
+		execve(mas_1[0], mas_1, 0);
+		//_exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		int i = wait(&j);
+		printf("j = %d i = %d\n", j, i);
+		return (j);
+	}
+	return (1);
+}
+
+long	check_procces(char **pro, char **path, int size, int size_p)
+{
+	int		i;
+	char	*mas;
+
+	i = 0;
+	while(path[i])
+	{
+		size_p = ft_strlen(*pro);
+		size = ft_strlen(path[i]);
+		mas = ft_calloc(size + size_p + 2, sizeof(char));
+		if (!mas)
+			return (1);
+		ft_strlcat(mas, path[i], size + 1);
+		ft_strlcat(mas, "/", size + 2);
+		ft_strlcat(mas, *pro, size + size_p + 2);
+		if (!check_valid_procces(mas, 0))
+		{
+			free(*pro);
+			*pro = mas;
+			return (0);
+		}
+		free(mas);
+		++i;
+	}
+	return (1);	
+}
 
 char	**creat_proc_args(char *av, char **path)
 {
@@ -31,8 +79,8 @@ char	**creat_proc_args(char *av, char **path)
 	pro = ft_split(av, ' ');
 	if (!pro)
 		return ((void *)free_doubl_mas(&pro));
-	// if (check_procces(&(pro[0]), path))
-	// 	return (free_doubl_mas(&pro));
+	if (check_procces(&(pro[0]), path, 0, 0))
+		return ((void *)free_doubl_mas(&pro));
 	i = 0;
 	while (pro[i])
 		++i;

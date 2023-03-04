@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:24:17 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/04 23:58:25 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/05 00:45:25 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ char	**get_path(char **avp)
 		else
 			++i;
 	}
-	avp[i][2] = '.';
-	avp[i][3] = '/';
+	avp[i][3] = '.';
 	avp[i][4] = ':';
-	return (ft_split((avp[i]) + 2, ':'));
+	return (ft_split((avp[i]) + 3, ':'));
 }
 
 char	***cat_proc(char ****proces2, char ****proces)
