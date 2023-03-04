@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:34:33 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/05 00:45:20 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/05 00:56:29 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	check_proces_patch(char ****proces, char **av, int ac, char **avp)
 	// (void)proces;
 	i = 0;
 	*proces = 0;
-	while (i < ac - 1)
+	while (i < ac)
 	{
 		// printf("get_args_5\n");
 		proces2 = malloc(sizeof(char **) * (i + 2));
