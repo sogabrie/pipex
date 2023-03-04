@@ -10,12 +10,30 @@ long	free_mas(char **mas)
 	return (0);
 }
 
-long	free_mas_ty(char **mas, char **mas2)
+long	free_doubl_mas(char ***mas)
 {
-	//printf("fre_mas_ty_1");
-	free_mas(mas);
-	//printf("fre_mas_ty_2");
-	free_mas(mas2);
-	//printf("fre_mas_ty_3");
+	int	i;
+
+	i = 0;
+	if (!(*mas))
+		return (0);
+	while ((*mas)[i])
+		free_mas(&(*mas)[i++]);
+	free(*mas);
+	*mas = 0;
+	return (0);
+}
+
+long	free_triple_mas(char ****mas)
+{
+	int	i;
+
+	i = 0;
+	if (!(*mas))
+		return (0);
+	while ((*mas)[i])
+		free_doubl_mas(&(*mas)[i++]);
+	free(*mas);
+	*mas = 0;
 	return (0);
 }

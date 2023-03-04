@@ -6,35 +6,93 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:34:33 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/03 22:37:57 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/04 23:58:22 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**creat_proc_args(char *av, char **avp)
-{
-	char	**pro;
+// long	check_procces(char **pro, char **path)
+// {
+// 	char *mas;
 
-	return (0);
+// 	mas = 
+	
+// 	return (0);	
+// }
+
+char	**creat_proc_args(char *av, char **path)
+{
+	int		i;
+	char	**pro;
+	char	**pro_2;
+
+	(void)path;
+	pro = ft_split(av, ' ');
+	if (!pro)
+		return ((void *)free_doubl_mas(&pro));
+	// if (check_procces(&(pro[0]), path))
+	// 	return (free_doubl_mas(&pro));
+	i = 0;
+	while (pro[i])
+		++i;
+	pro_2 = ft_calloc(i + 2, sizeof(char *));
+	if (!pro_2)
+		return ((void *)free_doubl_mas(&pro));
+	i = -1;
+	while (pro[++i])
+		pro_2[i] = pro[i];
+	free(pro);
+	return (pro_2);
 }
 
 int	check_proces_patch(char ****proces, char **av, int ac, char **avp)
 {
-	int	i;
-	char ***proces2;
-	
+	int		i;
+	char	***proces2;
+	char	**path;
+
+
+	path = get_path(avp);
+	// (void)proces2;
+	// (void)ac;
+	// (void)av;
+	// (void)proces;
 	i = 0;
-	while (i < ac)
+	*proces = 0;
+	while (i < ac - 1)
 	{
+		// printf("get_args_5\n");
 		proces2 = malloc(sizeof(char **) * (i + 2));
+		if (!proces2)
+			return (1);
+		// printf("get_args_6\n");
 		proces2[i + 1] = 0;
-		*proces = cat_proc(proces2, proces);
+		// printf("get_args_7\n");
+		*proces = cat_proc(&proces2, proces);
+		// printf("get_args_8\n");
 		proces2 = 0;
-		(*proces)[i] = creat_proc_args(av[i], avp);
+		// printf("get_args_9\n");
+		(*proces)[i] = creat_proc_args(av[i], path);
 		if (!(*proces)[i])
 			return (1);
 		++i;
+		// printf("get_args_10\n");
 	}
+	i = 0;
+	while (path[i])
+		printf("path = %s\n", path[i++]);
+	i = 0;
+	int j = 0;
+	while ((*proces)[i])
+	{
+		j = 0;
+		while((*proces)[i][j])
+			printf("%s ", (*proces)[i][j++]);
+		printf("\n");
+		++i;
+	}
+		
+	free_doubl_mas(&path);
 	return (0);
 }
