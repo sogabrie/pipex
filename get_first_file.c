@@ -76,21 +76,23 @@ int	get_file_list(char *a,char **here_doc)
 	return (1);
 }
 
-int	get_first_file(int *ac, char ***av,char **here_doc)
+int	get_first_file(int *ac, char ***av,t_here_doc *first_file)
 {
 	// printf("av[1] = %s\n", (*av)[1]);
 	// printf("strcmp = %d\n", ft_strcmp("here_doc", (*av)[1]));
 	if (!ft_strcmp("here_doc", (*av)[1]))
 	{
-		if (get_here_list(*av, here_doc))
+		if (get_here_list(*av, &(first_file->here_doc)))
 			return (1);
 		*av += 3;
 		*ac -= 3;
+		first_file->flag = 0;
 		return (0);
 	}
-	if (!get_file_list((*av)[1], here_doc))
+	if (!get_file_list((*av)[1], &(first_file->here_doc)))
 		return (1);
 	*av += 2;
 	*ac -= 2;
+	first_file->flag = 3;
 	return (0);
 }

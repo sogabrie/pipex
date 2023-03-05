@@ -1,5 +1,5 @@
 SRCS			= pipex.c get_first_file.c messeg_err.c free_ret.c \
-					get_procces_argv.c get_procces_argv_utils.c
+					get_procces_argv.c get_procces_argv_utils.c fork_do.c
 
 OBJS			= $(SRCS:.c=.o)
 
