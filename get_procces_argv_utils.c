@@ -14,11 +14,11 @@
 
 char	**get_path(char **avp)
 {
-	char	*path;
+	//char	*path;
 	int		i;
 
 	i = 0;
-	path = 0;
+	//path = 0;
 	while (avp[i])
 	{
 		if (!ft_strncmp("PATH", avp[i], 4))

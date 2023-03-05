@@ -22,6 +22,8 @@
 # include <math.h>
 # include <sys/types.h>
 # include "libft.h"
+#include <sys/types.h>
+#include <sys/wait.h>
 
 typedef struct s_here_doc
 {
