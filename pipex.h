@@ -31,6 +31,11 @@ typedef struct s_here_doc
 	int		flag;
 }			t_here_doc;
 
+typedef struct s_proces
+{
+	char	**process;
+	char	*proc_path;
+}			t_proces;
 
 int		mess_no_args();
 
@@ -41,12 +46,12 @@ long	free_triple_mas(char ****mas);
 int		get_first_file(int *ac, char ***av,t_here_doc *first_file);
 
 // int		check_proces_patch(char ****proces, char **av, int ac, char **avp);
-char	**creat_proc_args(char *av, char **path);
+int		creat_proc_args(t_proces *proc, char *av, char **path);
 
-char	***cat_proc(char ****proces2, char ****proces);
+//char	***cat_proc(char ****proces2, char ****proces);
 char	**get_path(char **avp);
 
-void	child_fork(char **process, t_here_doc *first_file, int *fd);
+void	child_fork(t_proces *process, t_here_doc *first_file, int *fd);
 long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd);
 
 #endif

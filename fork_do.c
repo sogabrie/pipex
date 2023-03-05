@@ -1,18 +1,18 @@
 #include "pipex.h"
 
-void	child_fork(char **process, t_here_doc *first_file, int *fd)
+void	child_fork(t_proces *process, t_here_doc *first_file, int *fd)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
-	while (process[i])
-		++i;
-	process[i] = first_file->here_doc;
-	process[i] = "file";
+	// i = 0;
+	// while (process[i])
+	// 	++i;
+	// process[i] = first_file->here_doc;
 	(void)fd;
+	(void)first_file;
 	//int j = open("file_2",O_CREAT  | O_WRONLY );
 	//dup2(j, dup(1));
-	execve(process[0], process, 0);
+	execve(process->proc_path, process->process, 0);
 }
 
 long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd)
@@ -24,9 +24,9 @@ long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd)
 	int f;
 
 	(void)fd;
-	int j = open("file_2", O_CREAT  | O_WRONLY );
-	int t = dup(1);
-	dup2(j, t);
+	// int j = open("file_2", O_CREAT  | O_WRONLY );
+	// int t = dup(1);
+	// dup2(j, t);
 	// char a;
 	// int q = 1;
 	// while (q)

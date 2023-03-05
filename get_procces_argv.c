@@ -53,29 +53,30 @@ long	check_procces(char **pro, char **path, int size, int size_p)
 	return (1);	
 }
 
-char	**creat_proc_args(char *av, char **path)
+int	creat_proc_args(t_proces *proc, char *av, char **path)
 {
-	int		i;
-	char	**pro;
-	char	**pro_2;
+	//int		i;
+	// char	**pro;
+	// char	**pro_2;
 
-	(void)path;
-	pro = ft_split(av, ' ');
-	if (!pro)
-		return ((void *)free_doubl_mas(&pro));
-	if (check_procces(&(pro[0]), path, 0, 0))
-		return ((void *)free_doubl_mas(&pro));
-	i = 0;
-	while (pro[i])
-		++i;
-	pro_2 = ft_calloc(i + 2, sizeof(char *));
-	if (!pro_2)
-		return ((void *)free_doubl_mas(&pro));
-	i = -1;
-	while (pro[++i])
-		pro_2[i] = pro[i];
-	free(pro);
-	return (pro_2);
+	
+	proc->process = ft_split(av, ' ');
+	proc->proc_path = ft_strdup(proc->process[0]);
+	if (!proc->process || !proc->proc_path)
+		return (free_doubl_mas(&proc->process) || free_mas(&proc->proc_path));
+	if (check_procces((&proc->proc_path), path, 0, 0))
+		return (free_doubl_mas(&proc->process) || free_mas(&proc->proc_path));
+	// i = 0;
+	// while (proc->proc_path[i])
+	// 	++i;
+	// pro_2 = ft_calloc(i + 2, sizeof(char *));
+	// if (!pro_2)
+	// 	return ((void *)free_doubl_mas(&pro));
+	// i = -1;
+	// while (pro[++i])
+	// 	pro_2[i] = pro[i];
+	// free(pro);
+	return (0);
 }
 
 // int	check_proces_patch(char ****proces, char **av, int ac, char **avp)
