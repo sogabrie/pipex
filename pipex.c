@@ -6,39 +6,59 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/05 21:16:48 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:52:52 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+int	creat_pipe_mas(int ***fd_mas, int i)
+{
+	int	**mas_2;
+	int	*el_1;
+	int	j;
+
+	j = -1;
+	mas_2 = ft_calloc(i + 1, sizeof(int *));
+	el_1 = ft_calloc(2, sizeof(int));
+	if (!mas_2 || !el_1)
+		return (free_int_mas_2(mas_2, el_1) || 1);
+	while (++j <= i)
+		mas_2[j] = fd_mas[j];
+	mas_2[j] = el_1;
+	free_double_int_mas(&fd_mas);
+	fd_mas = mas_2;
+	return (0);
+}
+
 long	pipexs(char **av, t_here_doc *first_file, char **path, int ac)
 {
 	int		i;
+	int	*fd_mas[2];
 	t_proces	proces;
 	pid_t  pid;
+	
 	(void)first_file;
 	
 	i = 0;
+	if (creat_pipe_mas(fd_mas, 0))
+			return (1);
+	pipe(fd_mas[0]);
 	while (i < ac - 1)
 	{
-		printf("aaaaaaaaaaaaaaaaa\n");
 		creat_proc_args(&proces, av[i],path);
-		int j = 0;
-		while (proces.process && proces.process[j])
-			printf("proces = %s\n", proces.process[j++]);
-		printf("proc_path = %s\n", proces.proc_path);
-		int fd[2];
-		pipe(fd);
+		if (creat_pipe_mas(fd_mas, i + 1))
+			return (1);
+		pipe(fd_mas[i + 1]);
 		pid = fork();
 		if (pid < 0)
 		 	return (2);
 		else if (!pid)
-			child_fork(&proces, first_file, fd);
+			child_fork(&proces, first_file, fd_mas, i + 1);
 		else
 		{
 			//printf("parent_start\n");
-			if (parent_fork(pid, first_file, fd))
+			if (parent_fork(pid, first_file, fd_mas, i + 1))
 				return (3);
 		}
 		++i;

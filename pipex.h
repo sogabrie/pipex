@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:21:51 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/05 21:03:11 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:53:39 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		creat_proc_args(t_proces *proc, char *av, char **path);
 //char	***cat_proc(char ****proces2, char ****proces);
 char	**get_path(char **avp);
 
-void	child_fork(t_proces *process, t_here_doc *first_file, int *fd);
-long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd);
+void	child_fork(t_proces *process, t_here_doc *first_file, int **fd, int i);
+long	parent_fork(pid_t pid, t_here_doc *first_file, int **fd, int i);
 
 #endif

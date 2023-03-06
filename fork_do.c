@@ -1,6 +1,8 @@
 #include "pipex.h"
 
-void	child_fork(t_proces *process, t_here_doc *first_file, int *fd)
+// int	get_file_fd()
+
+void	child_fork(t_proces *process, t_here_doc *first_file, int **fd, int i)
 {
 	// int	i;
 
@@ -15,9 +17,9 @@ void	child_fork(t_proces *process, t_here_doc *first_file, int *fd)
 	execve(process->proc_path, process->process, 0);
 }
 
-long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd)
+long	parent_fork(pid_t pid, t_here_doc *first_file, int **fd, int i)
 {
-	printf("parent\n");
+	// printf("parent\n");
 	(void)first_file;
 	(void)pid;
 
@@ -34,8 +36,8 @@ long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd)
 	// 	q = read(j, &a, 1);
 	// 	printf("%c",a);
 	// }
-	int i = wait(&f);
-	printf("\nwait = %d  f = %d\n\n", i, f);
+	// int i = wait(&f);
+	// printf("\nwait = %d  f = %d\n\n", i, f);
 	return (0);
 	//exit(EXIT_FAILURE);
 }
