@@ -65,7 +65,7 @@ long	pipexs(char **av, t_here_doc *first_file, char **path, int ac, char **avp)
 	while (i < ac - 2)
 	{
 		creat_proc_args(&proces, av[i++],path);
-		child_parent(&proces, avp, 1);
+		child_parent(&proces, avp);
 	}
 	creat_proc_args(&proces, av[i],path);
 	execve(proces.proc_path, proces.process, avp);

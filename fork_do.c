@@ -82,7 +82,7 @@ long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd, int i)
 	// //exit(EXIT_FAILURE);
 }
 
-void	child_parent(t_proces *process, char **avp, int i)
+void	child_parent(t_proces *process, char **avp)
 {
 	pid_t	pid;
 	int		fd[2];
@@ -99,9 +99,6 @@ void	child_parent(t_proces *process, char **avp, int i)
 	{
 		close(fd[0]);
 		dup2(fd[1], 1);
-		if (i == 0)
-			exit(1);
-		else
-			execve(process->proc_path, process->process, avp);
+		execve(process->proc_path, process->process, avp);
 	}
 }
