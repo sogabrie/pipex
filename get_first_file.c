@@ -76,20 +76,39 @@ int	get_file_list(char *a,char **here_doc)
 	return (1);
 }
 
+long	get_file_name(char **here_doc, char **mas)
+{
+	int	fd;
+	int	i;
+	char file_name[100];
+
+	i = 4;
+	file_name[0] = 'f';
+	file_name[1] = 0;
+	while (!access(file_name,0) && i < 100)
+		file_name[i] = (((i * 34) % 170) + 34) % 170; 
+
+	*here_doc = ft_strdup("123@@file@@321");
+	if (!(*here_doc))
+		return (fre_mas(*mas));
+	fd = open(*here_doc, O_CREAT | O_RDWR , 00777);
+}
+
 int	get_first_file(int *ac, char ***av,t_here_doc *first_file)
 {
-	// printf("av[1] = %s\n", (*av)[1]);
-	// printf("strcmp = %d\n", ft_strcmp("here_doc", (*av)[1]));
+	char *mas;
+
+	mas = 0;	
 	if (!ft_strcmp("here_doc", (*av)[1]))
 	{
-		if (get_here_list(*av, &(first_file->here_doc)))
+		if (get_here_list(*av, &mas) && get_file_name(&first_file->here_doc, &mas))
 			return (1);
 		*av += 3;
 		*ac -= 3;
 		first_file->flag = 0;
 		return (0);
 	}
-	if (!get_file_list((*av)[1], &(first_file->here_doc)))
+	if (!get_file_list((*av)[1], &mas) && get_file_name(&first_file->here_doc, &mas))
 		return (1);
 	*av += 2;
 	*ac -= 2;
