@@ -82,16 +82,27 @@ long	get_file_name(char **here_doc, char **mas)
 	int	i;
 	char file_name[100];
 
-	i = 4;
+	i = 0;
 	file_name[0] = 'f';
-	file_name[1] = 0;
-	while (!access(file_name,0) && i < 100)
-		file_name[i] = (((i * 34) % 170) + 34) % 170; 
-
-	*here_doc = ft_strdup("123@@file@@321");
+	//printf("i == %d  access = %d  file_name == %s\n", i, access(file_name,0), file_name);
+	while (++i < 100 && !access(file_name,0))
+	{
+		//printf("i == %d  access = %d  file_name == %s\n", i, access(file_name,0), file_name);
+		file_name[i] = (((i * 48) % 130) + 48) % 130; 
+		file_name[i + 1] = 0;
+	}
+	file_name[i] = 0;
+	*here_doc = ft_strdup(file_name);
 	if (!(*here_doc))
-		return (fre_mas(*mas));
+		return (free_mas(mas) || 1);
 	fd = open(*here_doc, O_CREAT | O_RDWR , 00777);
+	if (fd == -1)
+		return (free_mas(mas) || 1);
+	i = 0;
+	while ((*mas)[i])
+		write(fd, &((*mas)[i++]), 1);
+	close(fd);
+	return (free_mas(mas));
 }
 
 int	get_first_file(int *ac, char ***av,t_here_doc *first_file)
@@ -101,14 +112,14 @@ int	get_first_file(int *ac, char ***av,t_here_doc *first_file)
 	mas = 0;	
 	if (!ft_strcmp("here_doc", (*av)[1]))
 	{
-		if (get_here_list(*av, &mas) && get_file_name(&first_file->here_doc, &mas))
+		if (get_here_list(*av, &mas) || get_file_name(&first_file->here_doc, &mas))
 			return (1);
 		*av += 3;
 		*ac -= 3;
 		first_file->flag = 0;
 		return (0);
 	}
-	if (!get_file_list((*av)[1], &mas) && get_file_name(&first_file->here_doc, &mas))
+	if (!get_file_list((*av)[1], &mas) || get_file_name(&first_file->here_doc, &mas))
 		return (1);
 	*av += 2;
 	*ac -= 2;
