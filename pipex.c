@@ -38,48 +38,65 @@ int	creat_pipe_mas(int ***fd_mas, int i)
 	return (0);
 }
 
-long	pipexs(char **av, t_here_doc *first_file, char **path, int ac)
+long	pipexs(char **av, t_here_doc *first_file, char **path, int ac, char **avp)
 {
 	int		i;
-	int	**fd_mas;
+	// int	**fd_mas;
 	t_proces	proces;
-	pid_t  pid;
-	
+	// pid_t  pid;
 	(void)first_file;
+	// (void)first_file;
 	
+	// i = 0;
+	// if (creat_pipe_mas(&fd_mas, 0))
+	// 		return (1);
+	// // printf("Pipexs_5\n");
+	// pipe(fd_mas[0]);
+	// // printf("Pipexs_6\n");
+	// dup2(fd_mas[0][0], dup(open("file_2",O_RDWR)));
+	// // printf("Pipexs_7\n");
 	i = 0;
-	if (creat_pipe_mas(&fd_mas, 0))
-			return (1);
-	// printf("Pipexs_5\n");
-	pipe(fd_mas[0]);
-	// printf("Pipexs_6\n");
-	dup2(fd_mas[0][0], dup(open("file_2",O_RDWR)));
-	// printf("Pipexs_7\n");
-	while (i < ac - 1)
+	int file_1 = open("file", O_RDONLY);
+	int file_2 = open("file_2", O_CREAT | O_WRONLY | O_TRUNC, 00777);
+	dup2(file_1, 0);
+	dup2(file_2, 1);
+	// creat_proc_args(&proces, av[0],path);
+	// child_parent(&proces, avp, 1);
+	while (i < ac - 2)
 	{
-		// printf("Pipexs_8\n");
-		creat_proc_args(&proces, av[i],path);
-		// printf("Pipexs_9\n");
-		if (creat_pipe_mas(&fd_mas, i + 1))
-			return (1);
-		// printf("Pipexs_10\n");
-		pipe(fd_mas[i + 1]);
-		pid = fork();
-		if (pid < 0)
-		 	return (2);
-		else if (!pid)
-			child_fork(&proces, first_file, fd_mas, i + 1 , ac);
-		else
-		{
-			//printf("parent_start\n");
-			if (parent_fork(pid, first_file, fd_mas, i + 1))
-				return (3);
-		}
-		++i;
+		creat_proc_args(&proces, av[i++],path);
+		child_parent(&proces, avp, 1);
 	}
-	unlink(first_file->here_doc);
-	close(fd_mas[0][0]);
-	close(fd_mas[i][1]);
+	creat_proc_args(&proces, av[i],path);
+	execve(proces.proc_path, proces.process, avp);
+
+	// while (i < ac - 1)
+	// {
+	// 	// printf("Pipexs_8\n");
+	// 	creat_proc_args(&proces, av[i],path);
+	// 	// printf("Pipexs_9\n");
+	// 	// if (creat_pipe_mas(&fd_mas, i + 1))
+	// 	// 	return (1);
+	// 	// printf("Pipexs_10\n");
+	// 	// pipe(fd_mas[i + 1]);
+
+	// 	int pip[2];
+	// 	pipe(pip);
+	// 	pid_t pid = fork();
+	// 	if (pid < 0)
+	// 	 	return (2);
+	// 	else if (pid)
+	// 		parent_fork(pid, first_file, pip, i + 1);
+	// 	else
+	// 	{
+	// 		//printf("parent_start\n");
+	// 		child_fork(&proces, first_file, pip, i + 1 , ac, avp);
+	// 	}
+	// 	++i;
+	// }
+	// unlink(first_file->here_doc);
+	// close(fd_mas[0][0]);
+	// close(fd_mas[i][1]);
 	//return (write_file(here_doc, av));
 	return (0);
 }
@@ -100,7 +117,7 @@ int	main(int ac, char **av, char **avp)
 	if (!first_file.here_doc || !path)
 		return (0);
 	//printf("main_7\n");
-	if (pipexs(av, &first_file, path, ac))
+	if (pipexs(av, &first_file, path, ac, avp))
 		return (0);
 	// proces = creat_proc_args(av[0],path);
 	

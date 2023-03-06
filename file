@@ -1,30 +1,4 @@
-total 232$
-drwxr-xr-x  29 sogabrie  2022_yerevan    986 Mar  6 21:25 .$
-drwxr-xr-x  18 sogabrie  2022_yerevan    612 Mar  5 15:50 ..$
--rw-r--r--@  1 sogabrie  2022_yerevan   8196 Mar  5 20:42 .DS_Store$
-drwxr-xr-x  15 sogabrie  2022_yerevan    510 Mar  6 21:12 .git$
-drwxr-xr-x   3 sogabrie  2022_yerevan    102 Mar  5 18:08 .vscode$
--rw-r--r--   1 sogabrie  2022_yerevan    598 Mar  6 18:56 Makefile$
--rw-r--r--   1 sogabrie  2022_yerevan     18 Feb 22 19:17 README.md$
--rwxr-xr-x   1 sogabrie  2022_yerevan     12 Mar  6 21:17 f$
--rwxr-xr-x   1 sogabrie  2022_yerevan     12 Mar  6 21:19 f`$
--rwxr-xr-x   1 sogabrie  2022_yerevan      0 Mar  6 21:24 file$
--rwxr-xr-x   1 sogabrie  2022_yerevan     12 Mar  6 20:53 file_2$
--rw-r--r--   1 sogabrie  2022_yerevan   1155 Mar  6 21:24 fork_do.c$
--rw-r--r--   1 sogabrie  2022_yerevan   1332 Mar  6 21:24 fork_do.o$
--rw-r--r--   1 sogabrie  2022_yerevan    906 Mar  6 18:56 free_ret.c$
--rw-r--r--   1 sogabrie  2022_yerevan   1936 Mar  6 19:56 free_ret.o$
--rw-r--r--   1 sogabrie  2022_yerevan   2749 Mar  6 16:46 get_first_file.c$
--rw-r--r--   1 sogabrie  2022_yerevan   3772 Mar  6 19:56 get_first_file.o$
--rw-r--r--   1 sogabrie  2022_yerevan   3352 Mar  6 15:38 get_procces_argv.c$
--rw-r--r--   1 sogabrie  2022_yerevan   2064 Mar  6 15:39 get_procces_argv.o$
--rw-r--r--   1 sogabrie  2022_yerevan   1353 Mar  6 15:38 get_procces_argv_utils.c$
--rw-r--r--   1 sogabrie  2022_yerevan   1252 Mar  6 15:39 get_procces_argv_utils.o$
-drwxr-xr-x  97 sogabrie  2022_yerevan   3298 Mar  6 15:39 libft$
--rw-r--r--   1 sogabrie  2022_yerevan   3267 Mar  3 23:24 libft.h$
--rw-r--r--   1 sogabrie  2022_yerevan     55 Mar  3 22:38 messeg_err.c$
--rw-r--r--   1 sogabrie  2022_yerevan    616 Mar  6 15:39 messeg_err.o$
--rwxr-xr-x   1 sogabrie  2022_yerevan  19340 Mar  6 21:24 pipex$
--rw-r--r--   1 sogabrie  2022_yerevan   2979 Mar  6 21:10 pipex.c$
--rw-r--r--   1 sogabrie  2022_yerevan   1993 Mar  6 19:53 pipex.h$
--rw-r--r--   1 sogabrie  2022_yerevan   2424 Mar  6 21:10 pipex.o$
+total 232
+drwxr-xr-x  29 sogabrie  2022_yerevan    986 Mar  6 21:25 .
+
+

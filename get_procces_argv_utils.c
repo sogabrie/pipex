@@ -14,7 +14,7 @@
 
 char	**get_path(char **avp)
 {
-	//char	*path;
+	char	*path;
 	int		i;
 
 	i = 0;
@@ -26,9 +26,10 @@ char	**get_path(char **avp)
 		else
 			++i;
 	}
-	avp[i][3] = '.';
-	avp[i][4] = ':';
-	return (ft_split((avp[i]) + 3, ':'));
+	path = ft_strdup(avp[i]);
+	path[3] = '.';
+	path[4] = ':';
+	return (ft_split(path + 3, ':'));
 }
 
 char	***cat_proc(char ****proces2, char ****proces)

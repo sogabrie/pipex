@@ -54,7 +54,8 @@ int		creat_proc_args(t_proces *proc, char *av, char **path);
 //char	***cat_proc(char ****proces2, char ****proces);
 char	**get_path(char **avp);
 
-void	child_fork(t_proces *process, t_here_doc *first_file, int **fd, int i, int ca);
-long	parent_fork(pid_t pid, t_here_doc *first_file, int **fd, int i);
+void	child_parent(t_proces *process, char **avp, int i);
+void	child_fork(t_proces *process, t_here_doc *first_file, int *fd, int i, int ca, char **avp);
+long	parent_fork(pid_t pid, t_here_doc *first_file, int *fd, int i);
 
 #endif
