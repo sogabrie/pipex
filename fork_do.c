@@ -8,9 +8,10 @@ void	child_fork(t_proces *process, t_here_doc *first_file, int **fd, int i, int 
 
 	close(fd[i - 1][1]);
 	dup2(dup(fd[i-1][0]), 0);
-	//printf("ac - 1  = %d i = %d\n", ac - 1, i );
+	printf("ac - 1  = %d i = %d\n", ac - 1, i );
 	if (i == ac -1)
 	{
+		//int ftt = open("file",  O_CREAT | O_RDWR);
 		dup2(dup(open("file",  O_CREAT | O_RDWR)), 1);
 	}
 	else
@@ -48,10 +49,11 @@ long	parent_fork(pid_t pid, t_here_doc *first_file, int **fd, int i)
 	// 	q = read(j, &a, 1);
 	// 	printf("%c",a);
 	// }
-	// int t = waitpid(pid, &f, WUNTRACED | WCONTINUED);
+	// printf("parent_10\n");
+	//int t = waitpid(pid, &f, WUNTRACED | WCONTINUED);
 	// (void)t;
 	// (void)f;
-	// printf("\nwait = %d  f = %d\n\n", i, f);
+	// printf("wait = %d  f = %d\n", t, f);
 	return (0);
 	//exit(EXIT_FAILURE);
 }

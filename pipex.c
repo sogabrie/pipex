@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/06 20:20:55 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:10:33 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ long	pipexs(char **av, t_here_doc *first_file, char **path, int ac)
 	// printf("Pipexs_5\n");
 	pipe(fd_mas[0]);
 	// printf("Pipexs_6\n");
-	dup2( dup(open(first_file->here_doc,  O_CREAT | O_RDWR)), fd_mas[0][1]);
+	dup2(fd_mas[0][0], dup(open("file_2",O_RDWR)));
 	// printf("Pipexs_7\n");
 	while (i < ac - 1)
 	{
@@ -78,6 +78,8 @@ long	pipexs(char **av, t_here_doc *first_file, char **path, int ac)
 		++i;
 	}
 	unlink(first_file->here_doc);
+	close(fd_mas[0][0]);
+	close(fd_mas[i][1]);
 	//return (write_file(here_doc, av));
 	return (0);
 }
