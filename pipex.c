@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/06 18:56:14 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:20:55 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,56 @@ int	creat_pipe_mas(int ***fd_mas, int i)
 	int	j;
 
 	j = -1;
+	//  printf("creat_pipe_1\n");
 	mas_2 = ft_calloc(i + 1, sizeof(int *));
+	// printf("creat_pipe_2\n");
 	el_1 = ft_calloc(2, sizeof(int));
+	// printf("creat_pipe_3\n");
 	if (!mas_2 || !el_1)
-		return (free_int_mas_2(mas_2, el_1) || 1);
-	while (++j <= i)
-		mas_2[j] = fd_mas[j];
+		return (1);
+		//return (free_int_mas_2(mas_2, el_1) || 1);
+	// printf("creat_pipe_4\n");
+	while (++j < i)
+		mas_2[j] = (*fd_mas)[j];
+	// printf("creat_pipe_5\n");
 	mas_2[j] = el_1;
-	free_double_int_mas(&fd_mas);
-	fd_mas = mas_2;
+	//free_double_int_mas(fd_mas);
+	*fd_mas = mas_2;
+	// printf("fd_mas[0][0] = %d\n", *fd_mas[0][0]);
 	return (0);
 }
 
 long	pipexs(char **av, t_here_doc *first_file, char **path, int ac)
 {
 	int		i;
-	int	*fd_mas[2];
+	int	**fd_mas;
 	t_proces	proces;
 	pid_t  pid;
 	
 	(void)first_file;
 	
 	i = 0;
-	if (creat_pipe_mas(fd_mas, 0))
+	if (creat_pipe_mas(&fd_mas, 0))
 			return (1);
+	// printf("Pipexs_5\n");
 	pipe(fd_mas[0]);
+	// printf("Pipexs_6\n");
+	dup2( dup(open(first_file->here_doc,  O_CREAT | O_RDWR)), fd_mas[0][1]);
+	// printf("Pipexs_7\n");
 	while (i < ac - 1)
 	{
+		// printf("Pipexs_8\n");
 		creat_proc_args(&proces, av[i],path);
-		if (creat_pipe_mas(fd_mas, i + 1))
+		// printf("Pipexs_9\n");
+		if (creat_pipe_mas(&fd_mas, i + 1))
 			return (1);
+		// printf("Pipexs_10\n");
 		pipe(fd_mas[i + 1]);
 		pid = fork();
 		if (pid < 0)
 		 	return (2);
 		else if (!pid)
-			child_fork(&proces, first_file, fd_mas, i + 1);
+			child_fork(&proces, first_file, fd_mas, i + 1 , ac);
 		else
 		{
 			//printf("parent_start\n");
@@ -63,6 +77,7 @@ long	pipexs(char **av, t_here_doc *first_file, char **path, int ac)
 		}
 		++i;
 	}
+	unlink(first_file->here_doc);
 	//return (write_file(here_doc, av));
 	return (0);
 }
