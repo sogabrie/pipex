@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/06 21:10:33 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:11:01 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ long	pipexs(char **av, t_here_doc *first_file, char **path, int ac, char **avp)
 	// dup2(fd_mas[0][0], dup(open("file_2",O_RDWR)));
 	// // printf("Pipexs_7\n");
 	i = 0;
-	int file_1 = open("file", O_RDONLY);
-	int file_2 = open("file_2", O_CREAT | O_WRONLY | O_TRUNC, 00777);
+	int file_1 = open(first_file->here_doc, O_RDONLY);
+	int file_2 = open(av[ac - 1], O_CREAT | O_WRONLY | O_TRUNC, 00777);
 	dup2(file_1, 0);
 	dup2(file_2, 1);
 	// creat_proc_args(&proces, av[0],path);
@@ -66,6 +66,7 @@ long	pipexs(char **av, t_here_doc *first_file, char **path, int ac, char **avp)
 	{
 		creat_proc_args(&proces, av[i++],path);
 		child_parent(&proces, avp);
+		unlink(first_file->here_doc);
 	}
 	creat_proc_args(&proces, av[i],path);
 	execve(proces.proc_path, proces.process, avp);
