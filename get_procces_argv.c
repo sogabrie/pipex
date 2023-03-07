@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:34:33 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/05 20:06:43 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:18:30 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,54 +78,3 @@ int	creat_proc_args(t_proces *proc, char *av, char **path)
 	// free(pro);
 	return (0);
 }
-
-// int	check_proces_patch(char ****proces, char **av, int ac, char **avp)
-// {
-// 	int		i;
-// 	char	***proces2;
-// 	char	**path;
-
-
-// 	path = get_path(avp);
-// 	// (void)proces2;
-// 	// (void)ac;
-// 	// (void)av;
-// 	// (void)proces;
-// 	i = 0;
-// 	*proces = 0;
-// 	while (i < ac - 1)
-// 	{
-// 		// printf("get_args_5\n");
-// 		proces2 = malloc(sizeof(char **) * (i + 2));
-// 		if (!proces2)
-// 			return (1);
-// 		// printf("get_args_6\n");
-// 		proces2[i + 1] = 0;
-// 		// printf("get_args_7\n");
-// 		*proces = cat_proc(&proces2, proces);
-// 		// printf("get_args_8\n");
-// 		proces2 = 0;
-// 		// printf("get_args_9\n");
-// 		(*proces)[i] = creat_proc_args(av[i], path);
-// 		if (!(*proces)[i])
-// 			return (1);
-// 		++i;
-// 		// printf("get_args_10\n");
-// 	}
-// 	i = 0;
-// 	while (path[i])
-// 		printf("path = %s\n", path[i++]);
-// 	i = 0;
-// 	int j = 0;
-// 	while ((*proces)[i])
-// 	{
-// 		j = 0;
-// 		while((*proces)[i][j])
-// 			printf("%s ", (*proces)[i][j++]);
-// 		printf("\n");
-// 		++i;
-// 	}
-		
-// 	free_doubl_mas(&path);
-// 	return (0);
-// }

@@ -105,24 +105,22 @@ long	get_file_name(char **here_doc, char **mas)
 	return (free_mas(mas));
 }
 
-int	get_first_file(int *ac, char ***av,t_here_doc *first_file)
+int	get_first_file(int *ac, char ***av, char **first_file)
 {
 	char *mas;
 
 	mas = 0;	
 	if (!ft_strcmp("here_doc", (*av)[1]))
 	{
-		if (get_here_list(*av, &mas) || get_file_name(&first_file->here_doc, &mas))
+		if (get_here_list(*av, &mas) || get_file_name(first_file, &mas))
 			return (1);
 		*av += 3;
 		*ac -= 3;
-		first_file->flag = 0;
 		return (0);
 	}
-	if (!get_file_list((*av)[1], &mas) || get_file_name(&first_file->here_doc, &mas))
+	if (!get_file_list((*av)[1], &mas) || get_file_name(first_file, &mas))
 		return (1);
 	*av += 2;
 	*ac -= 2;
-	first_file->flag = 3;
 	return (0);
 }

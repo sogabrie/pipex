@@ -1,0 +1,110 @@
+Process:         pipex [66840]
+Path:            /Volumes/VOLUME/*/pipex
+Load Address:    0x10b045000
+Identifier:      pipex
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [62309]
+
+Date/Time:       2023-03-07 15:37:38.530 +0400
+Launch Time:     2023-03-07 15:37:38.264 +0400
+OS Version:      Mac OS X 10.14.6 (18G6032)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 66840: 187 nodes malloced for 14 KB
+Process 66840: 13 leaks for 320 total leaked bytes.
+
+    13 (320 bytes) << TOTAL >>
+      1 (80 bytes) ROOT LEAK: 0x7fd7c6d00010 [80]  length: 66  "PAT.:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"
+
+      3 (64 bytes) ROOT LEAK: 0x7fd7c6d00120 [32]
+         1 (16 bytes) 0x7fd7c6d00140 [16]  length: 3  "cat"
+         1 (16 bytes) 0x7fd7c6d00150 [16]  length: 2  "-e"
+
+      3 (64 bytes) ROOT LEAK: 0x7fd7c6e00000 [32]
+         1 (16 bytes) 0x7fd7c6e00020 [16]  length: 3  "cat"
+         1 (16 bytes) 0x7fd7c6e00030 [16]  length: 2  "-e"
+
+      3 (64 bytes) ROOT LEAK: 0x7fd7c6f00000 [32]
+         1 (16 bytes) 0x7fd7c6f00020 [16]  length: 3  "cat"
+         1 (16 bytes) 0x7fd7c6f00030 [16]  length: 2  "-e"
+
+      1 (16 bytes) ROOT LEAK: 0x7fd7c6d00170 [16]  length: 8  "/bin/cat"
+      1 (16 bytes) ROOT LEAK: 0x7fd7c6e00050 [16]  length: 8  "/bin/cat"
+      1 (16 bytes) ROOT LEAK: 0x7fd7c6f00050 [16]  length: 8  "/bin/cat"
+
+Process:         pipex [66682]$$$$$$$$
+Path:            /Volumes/VOLUME/*/pipex$$$$$$$$
+Load Address:    0x10894d000$$$$$$$$
+Identifier:      pipex$$$$$$$$
+Version:         ???$$$$$$$$
+Code Type:       X86-64$$$$$$$$
+Parent Process:  zsh [62309]$$$$$$$$
+$$$$$$$$
+Date/Time:       2023-03-07 15:36:40.845 +0400$$$$$$$$
+Launch Time:     2023-03-07 15:36:40.527 +0400$$$$$$$$
+OS Version:      Mac OS X 10.14.6 (18G6032)$$$$$$$$
+Report Version:  7$$$$$$$$
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks$$$$$$$$
+Analysis Tool Version:  Xcode 11.3.1 (11C505)$$$$$$$$
+----$$$$$$$$
+$$$$$$$$
+leaks Report Version: 4.0$$$$$$$$
+Process 66682: 187 nodes malloced for 14 KB$$$$$$$$
+Process 66682: 13 leaks for 320 total leaked bytes.$$$$$$$$
+$$$$$$$$
+    13 (320 bytes) << TOTAL >>$$$$$$$$
+      1 (80 bytes) ROOT LEAK: 0x7f9397402a50 [80]  length: 66  "PAT.:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"$$$$$$$$
+$$$$$$$$
+      3 (64 bytes) ROOT LEAK: 0x7f9397402b30 [32]$$$$$$$$
+         1 (16 bytes) 0x7f9397402b50 [16]  length: 3  "cat"$$$$$$$$
+         1 (16 bytes) 0x7f9397402b60 [16]  length: 2  "-e"$$$$$$$$
+$$$$$$$$
+      3 (64 bytes) ROOT LEAK: 0x7f9397402b90 [32]$$$$$$$$
+         1 (16 bytes) 0x7f9397402b70 [16]  length: 3  "cat"$$$$$$$$
+         1 (16 bytes) 0x7f9397402bb0 [16]  length: 2  "-e"$$$$$$$$
+$$$$$$$$
+      3 (64 bytes) ROOT LEAK: 0x7f9397500000 [32]$$$$$$$$
+         1 (16 bytes) 0x7f9397500020 [16]  length: 3  "cat"$$$$$$$$
+         1 (16 bytes) 0x7f9397500030 [16]  length: 2  "-e"$$$$$$$$
+$$$$$$$$
+      1 (16 bytes) ROOT LEAK: 0x7f9397402b80 [16]  length: 8  "/bin/cat"$$$$$$$$
+      1 (16 bytes) ROOT LEAK: 0x7f9397402bd0 [16]  length: 8  "/bin/cat"$$$$$$$$
+      1 (16 bytes) ROOT LEAK: 0x7f9397500050 [16]  length: 8  "/bin/cat"$$$$$$$$
+$$$$$$$$
+total 280$$$$$$$$$$$$$$$$$$$
+drwxr-xr-x  31 sogabrie  2022_yerevan   1054  7 ма�M-^@ 15:35 .$$$$$$$$$$$$$$$$$$$
+drwxr-xr-x  18 sogabrie  2022_yerevan    612  5 ма�M-^@ 15:50 ..$$$$$$$$$$$$$$$$$$$
+-rw-r--r--@  1 sogabrie  2022_yerevan   8196  5 ма�M-^@ 20:42 .DS_Store$$$$$$$$$$$$$$$$$$$
+drwxr-xr-x  15 sogabrie  2022_yerevan    510  7 ма�M-^@ 15:12 .git$$$$$$$$$$$$$$$$$$$
+drwxr-xr-x   3 sogabrie  2022_yerevan    102  5 ма�M-^@ 18:08 .vscode$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan    598  6 ма�M-^@ 18:56 Makefile$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan     18 22 �M-^Dев 19:17 README.md$$$$$$$$$$$$$$$$$$$
+-rwxr-xr-x   1 sogabrie  2022_yerevan  16760  7 ма�M-^@ 15:05 a.out$$$$$$$$$$$$$$$$$$$
+-rwxr-xr-x   1 sogabrie  2022_yerevan     72  7 ма�M-^@ 15:35 f$$$$$$$$$$$$$$$$$$$
+-rwxr-xr-x   1 sogabrie  2022_yerevan     72  7 ма�M-^@ 15:05 file$$$$$$$$$$$$$$$$$$$
+-rwxr-xr-x   1 sogabrie  2022_yerevan     92  7 ма�M-^@ 15:11 file_2$$$$$$$$$$$$$$$$$$$
+-rwxr-xr-x   1 sogabrie  2022_yerevan    100  7 ма�M-^@ 15:22 file_3$$$$$$$$$$$$$$$$$$$
+-rwxr-xr-x   1 sogabrie  2022_yerevan      0  7 ма�M-^@ 15:35 file_4$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1190  7 ма�M-^@ 15:16 fork_do.c$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1104  7 ма�M-^@ 15:22 fork_do.o$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1392  7 ма�M-^@ 15:17 free_ret.c$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1284  7 ма�M-^@ 15:22 free_ret.o$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   2676  7 ма�M-^@ 15:34 get_first_file.c$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   3748  7 ма�M-^@ 15:34 get_first_file.o$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   2294  7 ма�M-^@ 15:18 get_procces_argv.c$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   2064  7 ма�M-^@ 15:22 get_procces_argv.o$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1370  7 ма�M-^@ 15:05 get_procces_argv_utils.c$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1268  7 ма�M-^@ 15:07 get_procces_argv_utils.o$$$$$$$$$$$$$$$$$$$
+drwxr-xr-x  97 sogabrie  2022_yerevan   3298  7 ма�M-^@ 15:07 libft$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   3267  3 ма�M-^@ 23:24 libft.h$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan     55  3 ма�M-^@ 22:38 messeg_err.c$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan    616  7 ма�M-^@ 15:07 messeg_err.o$$$$$$$$$$$$$$$$$$$
+-rwxr-xr-x   1 sogabrie  2022_yerevan  19084  7 ма�M-^@ 15:34 pipex$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   2003  7 ма�M-^@ 15:34 pipex.c$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1594  7 ма�M-^@ 15:34 pipex.h$$$$$$$$$$$$$$$$$$$
+-rw-r--r--   1 sogabrie  2022_yerevan   1856  7 ма�M-^@ 15:34 pipex.o$$$$$$$$$$$$$$$$$$$
