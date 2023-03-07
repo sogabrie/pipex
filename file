@@ -1,13 +1,13 @@
-Process:         pipex [99064]
+Process:         pipex [2391]
 Path:            /Volumes/VOLUME/*/pipex
-Load Address:    0x102baa000
+Load Address:    0x103671000
 Identifier:      pipex
 Version:         ???
 Code Type:       X86-64
 Parent Process:  zsh [88655]
 
-Date/Time:       2023-03-07 20:25:30.619 +0400
-Launch Time:     2023-03-07 20:25:30.370 +0400
+Date/Time:       2023-03-07 21:02:47.150 +0400
+Launch Time:     2023-03-07 21:02:46.905 +0400
 OS Version:      Mac OS X 10.14.6 (18G6032)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
@@ -15,8 +15,6 @@ Analysis Tool Version:  Xcode 11.3.1 (11C505)
 ----
 
 leaks Report Version: 4.0
-Process 99064: 163 nodes malloced for 14 KB
-Process 99064: 1 leak for 32 total leaked bytes.
-
-    1 (32 bytes) ROOT LEAK: 0x7fd042d00040 [32]  length: 20  "/usr/local/munki/caa"
+Process 2391: 170 nodes malloced for 14 KB
+Process 2391: 0 leaks for 0 total leaked bytes.
 

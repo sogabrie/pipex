@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:21:51 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 20:25:11 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:02:32 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_proces
 int		mess_no_args(void);
 int		mess_no_file(char *file, char *fil);
 int		mess_error_malloc(char **mas_1, char ***mas_2, char *fil);
-int		mess_no_proc(char *file, char *fil, char ***mas, char **mas_2);
+int		mess_no_proc(char *file, char *fil);
 
 long	free_mas(char **mas);
 long	free_doubl_mas(char ***path);

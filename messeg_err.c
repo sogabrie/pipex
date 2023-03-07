@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:13:09 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 20:25:24 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:03:42 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ int	mess_error_malloc(char **mas_1, char ***mas_2, char *fil)
 	return (0);
 }
 
-int	mess_no_proc(char *file, char *fil, char ***mas, char **mas_2)
+int	mess_no_proc(char *file, char *fil)
 {
-	free_doubl_mas(mas);
-	free_mas(mas_2);
 	unlink(fil);
 	write (2, "zsh: command not found: ", 25);
 	write (2, file, ft_strlen(file));
