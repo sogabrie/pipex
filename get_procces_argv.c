@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:34:33 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 17:45:03 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:15:58 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	creat_proc_args(t_proces *proc, char *av, char **path)
 	free_mas(&proc->proc_path);
 	proc->proc_path = ft_strdup(proc->process[0]);
 	if (!proc->process || !proc->proc_path)
-		return (free_doubl_mas(&proc->process) || free_mas(&proc->proc_path));
+		return (free_doubl_mas(&proc->process) || free_mas(&proc->proc_path) || 1);
 	if (check_procces((&proc->proc_path), path, 0, 0))
-		return (free_doubl_mas(&proc->process) || free_mas(&proc->proc_path));
+		return (free_doubl_mas(&proc->process) || free_mas(&proc->proc_path) || 1);
 	return (0);
 }

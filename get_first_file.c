@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:09:11 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 17:12:09 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:04:22 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ long	get_file_name(char **here_doc, char **mas)
 	char	file_name[100];
 
 	i = 0;
-	file_name[0] = 'f';
+	file_name[0] = '.';
 	while (++i < 100 && !access(file_name, 0))
 	{
 		file_name[i] = (((i * 48) % 130) + 48) % 130;

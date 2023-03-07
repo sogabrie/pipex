@@ -6,13 +6,13 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 17:48:57 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:23:17 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-long	pipexs(char **av, t_here_doc *first_file, t_proces *proces, int ac)
+void	pipexs(char **av, t_here_doc *first_file, t_proces *proces, int ac)
 {
 	int	i;
 	int	file_1;
@@ -25,20 +25,22 @@ long	pipexs(char **av, t_here_doc *first_file, t_proces *proces, int ac)
 		file_2 = open(av[ac - 1], O_CREAT | O_WRONLY | O_APPEND, 00755);
 	file_1 = open(first_file->here_doc, O_RDONLY);
 	if (file_1 < 0 || file_2 < 0)
-		return (6);
+		exit(1);
 	dup2(file_1, 0);
 	dup2(file_2, 1);
 	while (i < ac - 2)
 	{
-		creat_proc_args(proces, av[i++], proces->path);
+		if (creat_proc_args(proces, av[i++], proces->path))
+			mess_no_proc(av[i - 1], first_file->here_doc, &proces->path, &proces->proc_path);
 		child_parent(proces, proces->avp);
 		unlink(first_file->here_doc);
 		free_doubl_mas(&proces->process);
 	}
-	creat_proc_args(proces, av[i], proces->path);
+	if (creat_proc_args(proces, av[i], proces->path))
+		mess_no_proc(av[i], first_file->here_doc, &proces->path, &proces->proc_path);
+	free_doubl_mas(&proces->path);
 	system("leaks pipex");
 	execve(proces->proc_path, proces->process, proces->avp);
-	return (0);
 }
 
 int	main(int ac, char **av, char **avp)
@@ -48,15 +50,16 @@ int	main(int ac, char **av, char **avp)
 
 	first_file.here_doc = 0;
 	proces.proc_path = 0;
-	if (ac < 4)
+	if (ac < 5 || (!ft_strcmp("here_doc", (av)[1]) && ac < 6))
 		return (mess_no_args() || 1);
-	get_first_file(&ac, &av, &first_file);
+	if (get_first_file(&ac, &av, &first_file))
+		return (mess_no_file(av[1], first_file.here_doc) || 1);
 	proces.path = get_path(avp);
 	proces.avp = avp;
 	if (!first_file.here_doc || !proces.path)
-		return (0);
-	if (pipexs(av, &first_file, &proces, ac))
-		return (0);
+		return (mess_error_malloc(&first_file.here_doc, &proces.path, first_file.here_doc) || 1);
+	pipexs(av, &first_file, &proces, ac);
+	unlink(first_file.here_doc);
 	free(first_file.here_doc);
 	free_doubl_mas(&proces.path);
 	return (0);
