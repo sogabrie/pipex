@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:34:33 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 21:04:08 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 02:58:28 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ long	check_procces(char **pro, char **path, int size, int size_p)
 	return (1);
 }
 
-int	creat_proc_args(t_proces *proc, char *av, char **path)
+int	creat_proc_args(t_proces *proc, char **av, char **path)
 {
-	proc->process = ft_split(av, ' ');
+	proc->process = ft_split(*av, ' ');
+	if (!proc->process || !proc->process[0])
+		return (1);
 	free_mas(&proc->proc_path);
 	proc->proc_path = ft_strdup(proc->process[0]);
 	if (!proc->process || !proc->proc_path)

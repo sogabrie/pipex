@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 22:08:18 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 02:59:15 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,23 @@ void	pipexs(char **av, t_here_doc *first_file, t_proces *proces, int ac)
 	int	i;
 
 	i = 0;
+	open_file(first_file, av, ac);
 	while (i < ac - 2)
 	{
-		if (creat_proc_args(proces, av[i++], proces->path))
-			mess_no_proc(av[i - 1], first_file->here_doc);
+		if (creat_proc_args(proces, &(av[i]), proces->path))
+			mess_no_proc(av[i], first_file);
 		child_parent(proces, proces->avp);
-		unlink(first_file->here_doc);
+		if (!first_file->flag)
+			unlink(first_file->here_doc);
 		free_doubl_mas(&proces->process);
+		i++;
 	}
-	if (creat_proc_args(proces, av[i], proces->path))
-		mess_no_proc(av[i], first_file->here_doc);
+	if (creat_proc_args(proces, &(av[i]), proces->path))
+	{
+		mess_no_proc(av[i], first_file);
+		return ;
+	}
 	free_doubl_mas(&proces->path);
-	system("leaks pipex");
 	execve(proces->proc_path, proces->process, proces->avp);
 }
 
@@ -52,20 +57,23 @@ int	main(int ac, char **av, char **avp)
 {
 	t_here_doc	first_file;
 	t_proces	proces;
+	int			flag;
 
 	first_file.here_doc = 0;
 	proces.proc_path = 0;
 	if (ac < 5 || (!ft_strcmp("here_doc", (av)[1]) && ac < 6))
 		return (mess_no_args() || 1);
-	if (get_first_file(&ac, &av, &first_file))
-		return (mess_no_file(av[1], first_file.here_doc) || 1);
+	flag = get_first_file(&ac, &av, &first_file);
+	if (flag)
+		return (mess_no_file(av[1], &first_file, flag));
 	proces.path = get_path(avp);
 	proces.avp = avp;
 	if (!first_file.here_doc || !proces.path)
 		return (mess_error_malloc(&first_file.here_doc, \
-		&proces.path, first_file.here_doc) || 1);
+		&proces.path, &first_file) || 1);
 	pipexs(av, &first_file, &proces, ac);
-	unlink(first_file.here_doc);
+	if (!first_file.flag)
+		unlink(first_file.here_doc);
 	free(first_file.here_doc);
 	free_doubl_mas(&proces.path);
 	return (0);

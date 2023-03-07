@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:09:11 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 20:04:22 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 02:58:40 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,12 @@ int	get_here_list(char **av, char **here_doc)
 
 int	get_file_list(char *a, char **here_doc)
 {
-	int		fd;
-	int		size;
-	char	as;
-
-	fd = open(a, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	size = 0;
-	while (0 < read(fd, &as, 1))
-		++size;
-	*here_doc = ft_calloc(size + 1, sizeof(char));
-	if (!(*here_doc))
+	if (access(a, 0))
 		return (1);
-	close(fd);
-	fd = open(a, O_RDONLY);
-	if (fd < 0)
-		return (free_mas(here_doc));
-	if (0 > read(fd, *here_doc, size))
-		return (free_mas(here_doc));
-	return (1);
+	if (access(a, 0))
+		return (2);
+	*here_doc = ft_strdup(a);
+	return (0);
 }
 
 long	get_file_name(char **here_doc, char **mas)
@@ -109,8 +95,10 @@ long	get_file_name(char **here_doc, char **mas)
 int	get_first_file(int *ac, char ***av, t_here_doc *first_file)
 {
 	char	*mas;
+	int		flag;
 
 	mas = 0;
+	flag = 0;
 	if (!ft_strcmp("here_doc", (*av)[1]))
 	{
 		if (get_here_list(*av, &mas) || \
@@ -121,9 +109,9 @@ int	get_first_file(int *ac, char ***av, t_here_doc *first_file)
 		*ac -= 3;
 		return (0);
 	}
-	if (!get_file_list((*av)[1], &mas) || \
-			get_file_name(&first_file->here_doc, &mas))
-		return (1);
+	flag = get_file_list((*av)[1], &first_file->here_doc);
+	if (flag)
+		return (flag);
 	first_file->flag = 3;
 	*av += 2;
 	*ac -= 2;

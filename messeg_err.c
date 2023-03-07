@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:13:09 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 21:03:42 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 03:00:17 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,46 @@
 
 int	mess_no_args(void)
 {
-	write (2, "parametrer qich en!\n", 21);
-	//system("leaks pipex");
+	write (2, "Few arguments for the function to work\n", 40);
 	return (0);
 }
 
-int	mess_no_file(char *file, char *fil)
+int	mess_no_file(char *file, t_here_doc *fil, int flag)
 {
-	unlink(fil);
-	write (2, "zsh: no such file or directory: ", 33);
-	write (2, file, ft_strlen(file));
-	write (2, "\n", 1);
-	//system("leaks pipex");
-	return (0);
+	if (flag == 1)
+	{
+		write (2, "bash: ", 7);
+		write (2, file, ft_strlen(file));
+		write (2, ": No such file or directory\n", 29);
+	}
+	else
+	{
+		if (!fil->flag)
+			unlink(fil->here_doc);
+		write (2, "bash: ", 7);
+		write (2, file, ft_strlen(file));
+		write (2, ": Permission denied\n", 29);
+	}
+	return (2);
 }
 
-int	mess_error_malloc(char **mas_1, char ***mas_2, char *fil)
+int	mess_error_malloc(char **mas_1, char ***mas_2, t_here_doc *file)
 {
-	unlink(fil);
+	if (!file->flag)
+		unlink(file->here_doc);
 	free_mas(mas_1);
 	free_doubl_mas(mas_2);
-	write(2, "malloki sxal\n", 14);
-	//system("leaks pipex");
+	write(2, "ERROR malloc\n", 14);
 	return (0);
 }
 
-int	mess_no_proc(char *file, char *fil)
+int	mess_no_proc(char *file, t_here_doc *fil)
 {
-	unlink(fil);
+	if (!fil->flag)
+		unlink(fil->here_doc);
 	write (2, "zsh: command not found: ", 25);
 	write (2, file, ft_strlen(file));
 	write (2, "\n", 1);
-	system("leaks pipex");
-	exit(2);
+	exit(0);
 	return (0);
 }
