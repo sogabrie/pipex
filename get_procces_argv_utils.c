@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:24:17 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 17:12:56 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:48:09 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char	**get_path(char **avp)
 {
+	char	**new_path;
 	char	*path;
 	int		i;
 
@@ -28,7 +29,11 @@ char	**get_path(char **avp)
 	path = ft_strdup(avp[i]);
 	path[3] = '.';
 	path[4] = ':';
-	return (ft_split(path + 3, ':'));
+	new_path = ft_split(path + 3, ':');
+	free_mas(&path);
+	if (new_path)
+		return (new_path);
+	return ((void *)0);
 }
 
 char	***cat_proc(char ****proces2, char ****proces)

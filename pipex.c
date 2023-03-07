@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 17:39:53 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:48:57 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ long	pipexs(char **av, t_here_doc *first_file, t_proces *proces, int ac)
 		creat_proc_args(proces, av[i++], proces->path);
 		child_parent(proces, proces->avp);
 		unlink(first_file->here_doc);
+		free_doubl_mas(&proces->process);
 	}
 	creat_proc_args(proces, av[i], proces->path);
-	//system("leaks pipex");
+	system("leaks pipex");
 	execve(proces->proc_path, proces->process, proces->avp);
 	return (0);
 }
@@ -58,6 +59,5 @@ int	main(int ac, char **av, char **avp)
 		return (0);
 	free(first_file.here_doc);
 	free_doubl_mas(&proces.path);
-	//system("leaks pipex");
 	return (0);
 }

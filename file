@@ -1,2 +1,47 @@
-ddddddd$$
-dddddddd$$
+Process:         pipex [82280]
+Path:            /Volumes/VOLUME/*/pipex
+Load Address:    0x103ec0000
+Identifier:      pipex
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [73575]
+
+Date/Time:       2023-03-07 17:48:18.914 +0400
+Launch Time:     2023-03-07 17:48:14.435 +0400
+OS Version:      Mac OS X 10.14.6 (18G6032)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 82280: 175 nodes malloced for 14 KB
+Process 82280: 0 leaks for 0 total leaked bytes.
+
+total 216
+drwxr-xr-x  26 sogabrie  2022_yerevan    884  7 мар 17:48 .
+drwxr-xr-x  18 sogabrie  2022_yerevan    612  5 мар 15:50 ..
+-rw-r--r--@  1 sogabrie  2022_yerevan   8196  5 мар 20:42 .DS_Store
+drwxr-xr-x  15 sogabrie  2022_yerevan    510  7 мар 17:40 .git
+drwxr-xr-x   3 sogabrie  2022_yerevan    102  5 мар 18:08 .vscode
+-rw-r--r--   1 sogabrie  2022_yerevan    598  6 мар 18:56 Makefile
+-rw-r--r--   1 sogabrie  2022_yerevan     18 22 фев 19:17 README.md
+-rwxr-xr-x   1 sogabrie  2022_yerevan    602  7 мар 17:44 file
+-rw-r--r--   1 sogabrie  2022_yerevan   1191  7 мар 17:09 fork_do.c
+-rw-r--r--   1 sogabrie  2022_yerevan   1104  7 мар 17:22 fork_do.o
+-rw-r--r--   1 sogabrie  2022_yerevan   1317  7 мар 16:53 free_ret.c
+-rw-r--r--   1 sogabrie  2022_yerevan   1284  7 мар 17:22 free_ret.o
+-rw-r--r--   1 sogabrie  2022_yerevan   3151  7 мар 17:12 get_first_file.c
+-rw-r--r--   1 sogabrie  2022_yerevan   3772  7 мар 17:22 get_first_file.o
+-rw-r--r--   1 sogabrie  2022_yerevan   2010  7 мар 17:45 get_procces_argv.c
+-rw-r--r--   1 sogabrie  2022_yerevan   2096  7 мар 17:47 get_procces_argv.o
+-rw-r--r--   1 sogabrie  2022_yerevan   1454  7 мар 17:48 get_procces_argv_utils.c
+-rw-r--r--   1 sogabrie  2022_yerevan   1368  7 мар 17:48 get_procces_argv_utils.o
+drwxr-xr-x  97 sogabrie  2022_yerevan   3298  7 мар 17:22 libft
+-rw-r--r--   1 sogabrie  2022_yerevan   3267  3 мар 23:24 libft.h
+-rw-r--r--   1 sogabrie  2022_yerevan    952  7 мар 17:15 messeg_err.c
+-rw-r--r--   1 sogabrie  2022_yerevan    616  7 мар 17:22 messeg_err.o
+-rwxr-xr-x   1 sogabrie  2022_yerevan  19084  7 мар 17:48 pipex
+-rw-r--r--   1 sogabrie  2022_yerevan   2129  7 мар 17:45 pipex.c
+-rw-r--r--   1 sogabrie  2022_yerevan   1679  7 мар 17:14 pipex.h
+-rw-r--r--   1 sogabrie  2022_yerevan   1944  7 мар 17:47 pipex.o
