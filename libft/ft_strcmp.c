@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 21:59:22 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/04 00:27:12 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:15:29 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 		++s;
 	}
 	if (s1[s] == '\0' && s2[s] == '\0')
-			return (0);
+		return (0);
 	return (1);
 }

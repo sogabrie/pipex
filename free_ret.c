@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:17:36 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/07 15:17:37 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:53:16 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 long	free_mas(char **mas)
 {
-	// printf("fre_mas_1");
 	free(*mas);
-	// printf("fre_mas_2");
 	*mas = 0;
-	// printf("fre_mas_2");
 	return (0);
 }
 

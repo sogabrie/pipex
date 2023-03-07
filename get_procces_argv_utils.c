@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:24:17 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/05 00:45:25 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:12:56 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ char	**get_path(char **avp)
 	int		i;
 
 	i = 0;
-	//path = 0;
 	while (avp[i])
 	{
 		if (!ft_strncmp("PATH", avp[i], 4))
-			break;
+			break ;
 		else
 			++i;
 	}
