@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:09:11 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/08 15:18:50 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:05:43 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_file_list(char *a, char **here_doc)
 {
 	if (access(a, 0))
 		return (1);
-	if (access(a, 3))
+	if (access(a, R_OK))
 		return (2);
 	*here_doc = ft_strdup(a);
 	return (0);

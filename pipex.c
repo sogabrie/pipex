@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:06 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/08 15:23:06 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:15:15 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	open_file(t_here_doc *first_file, char **av, int ac)
 	int	file_1;
 	int	file_2;
 
-	if (!access(av[ac - 1], 0))
-		if (access(av[ac - 1], 2))
+	if (!access(av[ac - 1], F_OK))
+		if (access(av[ac - 1], W_OK))
 			return (2);
 	if (first_file->flag)
 		file_2 = open(av[ac - 1], O_CREAT | O_WRONLY | O_TRUNC, 00755);
