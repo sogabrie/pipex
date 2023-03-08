@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:13:09 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/08 03:00:17 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:05:57 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	mess_no_args(void)
 {
-	write (2, "Few arguments for the function to work\n", 40);
+	write (2, "Please give more arguments\n", 28);
 	return (0);
 }
 
@@ -22,17 +22,15 @@ int	mess_no_file(char *file, t_here_doc *fil, int flag)
 {
 	if (flag == 1)
 	{
-		write (2, "bash: ", 7);
+		write (2, "zsh: no such file or directory: ", 33);
 		write (2, file, ft_strlen(file));
-		write (2, ": No such file or directory\n", 29);
 	}
 	else
 	{
 		if (!fil->flag)
 			unlink(fil->here_doc);
-		write (2, "bash: ", 7);
+		write (2, "zsh: permission denied: ", 25);
 		write (2, file, ft_strlen(file));
-		write (2, ": Permission denied\n", 29);
 	}
 	return (2);
 }

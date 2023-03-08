@@ -6,7 +6,7 @@
 /*   By: sogabrie <sogabrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:09:11 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/03/08 02:58:40 by sogabrie         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:18:50 by sogabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_here_list(char **av, char **here_doc)
 
 	while (1)
 	{
-		write(1, "heredoc>", 8);
+		write(1, "pipe heredoc>", 14);
 		mas2 = get_next_line(0);
 		if (!ft_strcmp_n(av[2], mas2))
 			break ;
@@ -59,7 +59,7 @@ int	get_file_list(char *a, char **here_doc)
 {
 	if (access(a, 0))
 		return (1);
-	if (access(a, 0))
+	if (access(a, 3))
 		return (2);
 	*here_doc = ft_strdup(a);
 	return (0);
